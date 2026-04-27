@@ -1,10 +1,10 @@
-# IR-2026-005 | SSH Brute Force Attack — Linux
+# IR-2026-005 | SSH Brute Force Attack: Linux
 
 **Date:** April 26, 2026  
 **Analyst:** Morgan Roberts  
 **Severity:** High  
-**Status:** Closed — Contained  
-**MITRE ATT&CK:** T1110 — Brute Force
+**Status:** Closed, Contained  
+**MITRE ATT&CK:** T1110 Brute Force
 
 ---
 
@@ -18,8 +18,8 @@ A brute force attack was detected against the Ubuntu Linux target via SSH (port 
 
 | Detail | Value |
 |--------|-------|
-| Target | Ubuntu Linux — 192.168.96.132 |
-| Attacker | Kali Linux — 192.168.96.131 |
+| Target | Ubuntu Linux 192.168.96.132 |
+| Attacker | Kali Linux 192.168.96.131 |
 | Protocol | SSH |
 | Port | 22 |
 | Log Source | /var/log/auth.log |
@@ -36,28 +36,28 @@ A brute force attack was detected against the Ubuntu Linux target via SSH (port 
 | 16:21:06 | Invalid user fakeuser detected |
 | 16:21:07 | Failed password attempts begin |
 | 16:21:24 | Connection closed after max authentication failures |
-| 16:21:24 | New connection established — attack continues |
+| 16:21:24 | New connection established, attack continues |
 | 16:24:39 | Final authentication failure recorded |
 
 ---
 
 ## Investigation
 
-### Step 1 — Confirm Failed Attempts
+### Step 1: Confirm Failed Attempts
 ```splunk
 index="linux_auth" "Failed Password"
 ```
 **Result:** 55 failed password events confirmed
 
-### Step 2 — Identify Attacking IP
+### Step 2: Identify Attacking IP
 ```splunk
 index="linux_auth" "Failed Password"
 | rex "from (?P<src_ip>\d+\.\d+\.\d+\.\d+)"
 | stats count by src_ip
 ```
-**Result:** 192.168.96.131 — 55 attempts
+**Result:** 192.168.96.131, 55 attempts
 
-### Step 3 — Analyze Source Ports
+### Step 3: Analyze Source Ports
 ```splunk
 index="linux_auth" "Failed Password"
 | rex "port (?P<src_port>\d+)"
@@ -65,13 +65,13 @@ index="linux_auth" "Failed Password"
 ```
 **Result:** 19 unique ephemeral source ports used, consistent with automated brute force tooling
 
-### Step 4 — Check for Successful Logins
+### Step 4: Check for Successful Logins
 ```splunk
 index="linux_auth" "Accepted password"
 ```
 **Result:** 0 successful authentications, attack did not succeed
 
-### Step 5 — Brute Force Detection Rule
+### Step 5: Brute Force Detection Rule
 ```splunk
 index="linux_auth" "Failed Password"
 | rex "from (?P<src_ip>\d+\.\d+\.\d+\.\d+)"
@@ -88,7 +88,7 @@ index="linux_auth" "Failed Password"
 - 19 unique source ports used indicating automated tooling
 - Target account `fakeuser` does not exist on the system, all attempts failed at the user validation stage
 - No successful authentication events detected
-- Attack pattern consistent with MITRE ATT&CK T1110 — Brute Force via SSH
+- Attack pattern consistent with MITRE ATT&CK T1110 Brute Force via SSH
 
 ---
 
