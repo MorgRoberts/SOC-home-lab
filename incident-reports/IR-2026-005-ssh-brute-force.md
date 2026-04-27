@@ -69,7 +69,7 @@ index="linux_auth" "Failed Password"
 ```splunk
 index="linux_auth" "Accepted password"
 ```
-**Result:** 0 successful authentications — attack did not succeed
+**Result:** 0 successful authentications, attack did not succeed
 
 ### Step 5 — Brute Force Detection Rule
 ```splunk
@@ -78,7 +78,7 @@ index="linux_auth" "Failed Password"
 | stats count by src_ip
 | where count > 5
 ```
-**Result:** 192.168.96.131 flagged with 55 attempts — exceeds threshold
+**Result:** 192.168.96.131 flagged with 55 attempts, exceeds threshold
 
 ---
 
@@ -95,7 +95,7 @@ index="linux_auth" "Failed Password"
 ## Recommendations
 
 1. Implement Fail2ban to automatically block IPs after repeated failures
-2. Disable password-based SSH authentication — enforce key-based auth only
+2. Disable password-based SSH authentication and enforce key-based auth only
 3. Restrict SSH access to trusted IP ranges via firewall rules
 4. Consider moving SSH to a non-standard port to reduce automated scanning noise
 5. Monitor auth.log continuously with the SSH Brute Force Detection alert saved in Splunk
