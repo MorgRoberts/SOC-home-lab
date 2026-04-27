@@ -1,4 +1,4 @@
-# IR-2026-002 | Nmap Reconnaissancez: Network Service Discovery
+# IR-2026-002 | Nmap Reconnaissance: Network Service Discovery
 
 **Date:** April 2026  
 **Analyst:** Morgan Roberts  
