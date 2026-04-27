@@ -68,7 +68,7 @@ index=main sourcetype=WinEventLog:Security EventCode=4624
 Account_Name=fakeuser
 ```
 
-**Result:** 0 successful logon events — attack did not succeed
+**Result:** 0 successful logon events, attack did not succeed
 
 ### Step 5: Timeline Analysis
 ```splunk
