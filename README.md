@@ -12,9 +12,9 @@ A hands-on Security Operations Center home lab built to simulate real-world atta
 | Host Machine | MacBook Pro (Apple Silicon) |
 | Hypervisor | VMware Fusion |
 | Storage | Samsung T7 SSD |
-| Windows VM | Windows 11 — target / Splunk server |
-| Linux VM | Ubuntu Linux — target / log source |
-| Attack VM | Kali Linux — attacker |
+| Windows VM | Windows 11: target / Splunk server |
+| Linux VM | Ubuntu Linux: target / log source |
+| Attack VM | Kali Linux: attacker |
 
 ---
 
@@ -41,7 +41,7 @@ A hands-on Security Operations Center home lab built to simulate real-world atta
 - **MITRE ATT&CK:** T1566 Phishing
 - **Incident Report:** IR-2026-003
 
-### 4. VPN Log Analysis — Impossible Travel Detection
+### 4. VPN Log Analysis: Impossible Travel Detection
 - Ingested VPN logs and investigated user account connecting from 3 states across 4 IPs within 60 minutes
 - Identified simultaneous sessions consistent with credential compromise
 - Documented full escalation report following Tier 1 SOC procedures
@@ -107,4 +107,4 @@ index=vpn_logs
 ## Certifications
 - CompTIA Security+ CE
 - Splunk Core Certified User (In Progress)
-- TryHackMe — Splunk: The Basics (Completed), Splunk: Setting up a SOC Lab (Completed)
+- TryHackMe; Splunk: The Basics (Completed), Splunk: Setting up a SOC Lab (Completed)
