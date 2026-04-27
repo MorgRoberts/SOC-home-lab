@@ -105,4 +105,4 @@ index=vpn_logs
 ## Certifications
 - CompTIA Security+ CE
 - Splunk Core Certified User (In Progress)
-- TryHackMe SOC Level 1 (In Progress)
+- TryHackMe — Splunk: The Basics (Completed), Splunk: Setting up a SOC Lab (Completed)
