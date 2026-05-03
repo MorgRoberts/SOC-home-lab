@@ -44,5 +44,3 @@ index=botsv1 sourcetype="WinEventLog:Security"
 | outputlookup EventCode.csv
 ```
 ```
-
-Then commit! 💪
