@@ -43,4 +43,3 @@ index=botsv1 sourcetype="WinEventLog:Security"
 | table EventCode Account_Name Type
 | outputlookup EventCode.csv
 ```
-```
